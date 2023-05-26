@@ -578,7 +578,7 @@ app.post('/api/upload', (req, res) => {
         fs.unlinkSync(oldPath)
         return res.status(400).json({
           error:
-            'File size exceeds the limit.  <a style="color: lightblue; text-decoration: underline;" href="https://master--stellar-zabaione-08f9a0.netlify.app/pricing">Upgrade</a> for more!',
+            'File size exceeds the limit.  <a style="color: lightblue; text-decoration: underline;" href="https://master--peaceful-paletas-bfa8d0.netlify.app/pricing">Upgrade</a> for more!',
         })
       }
 
@@ -587,7 +587,7 @@ app.post('/api/upload', (req, res) => {
         console.error('Limit Reached! Upgrade for more.')
         return res.status(400).json({
           error:
-            'Limit Reached! <a style="color: blue; text-decoration: underline;" href="https://master--stellar-zabaione-08f9a0.netlify.app/pricing">Upgrade</a> for more.',
+            'Limit Reached! <a style="color: blue; text-decoration: underline;" href="https://master--peaceful-paletas-bfa8d0.netlify.app/pricing">Upgrade</a> for more.',
         })
       }
 
@@ -808,8 +808,8 @@ app.post('/api/createCheckoutSession', async (req, res) => {
         },
       ],
       mode: 'subscription',
-      success_url: `https://localhost:3000/dashboard`,
-      cancel_url: `https://localhost:3000/cancel`,
+      success_url: `https://master--peaceful-paletas-bfa8d0.netlify.app/dashboard`,
+      cancel_url: `https://master--peaceful-paletas-bfa8d0.netlify.app/cancel`,
     })
 
     // Return the session ID to the client
