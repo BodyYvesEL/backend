@@ -274,12 +274,12 @@ app.post('/api/consume', async (req, res) => {
   }
 
   try {
-    /* Load raw ../../tmp from all files in the directory */
+    /* Load raw docs from all files in the directory */
     const directoryLoader = new DirectoryLoader('../../tmp', {
       '.pdf': (path) => new CustomPDFLoader(path),
     })
 
-    const raw../../tmp = await directoryLoader.load()
+    const rawdocs = await directoryLoader.load()
 
     /* Split text into chunks */
     const textSplitter = new RecursiveCharacterTextSplitter({
@@ -287,7 +287,7 @@ app.post('/api/consume', async (req, res) => {
       chunkOverlap: 200,
     })
 
-    const ../../tmp = await textSplitter.splitDocuments(raw../../tmp)
+    const docs = await textSplitter.splitDocuments(rawdocs)
 
     await connectDB()
 
@@ -295,7 +295,7 @@ app.post('/api/consume', async (req, res) => {
     const newNamespace = new Namespace({
       userEmail: userEmail,
       name: namespaceName,
-      source: raw../../tmp[0].pageContent,
+      source: rawdocs[0].pageContent,
     })
     await newNamespace.save()
 
@@ -304,7 +304,7 @@ app.post('/api/consume', async (req, res) => {
     const index = pinecone.Index(PINECONE_INDEX_NAME) //change to your own index name
 
     //embed the PDF documents
-    await PineconeStore.fromDocuments(../../tmp, embeddings, {
+    await PineconeStore.fromDocuments(docs, embeddings, {
       pineconeIndex: index,
       namespace: namespaceName,
       textKey: 'text',
