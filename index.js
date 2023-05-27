@@ -195,7 +195,7 @@ app.post('/api/consume', async (req, res) => {
 
   const PINECONE_INDEX_NAME = process.env.PINECONE_INDEX_NAME ?? ''
 
-  const filePath = 'docs'
+  const filePath = '../../tmp'
 
   if (!process.env.PINECONE_ENVIRONMENT || !process.env.PINECONE_API_KEY) {
     throw new Error('Pinecone environment or api key vars missing')
@@ -274,12 +274,12 @@ app.post('/api/consume', async (req, res) => {
   }
 
   try {
-    /* Load raw docs from all files in the directory */
-    const directoryLoader = new DirectoryLoader('docs', {
+    /* Load raw ../../tmp from all files in the directory */
+    const directoryLoader = new DirectoryLoader('../../tmp', {
       '.pdf': (path) => new CustomPDFLoader(path),
     })
 
-    const rawDocs = await directoryLoader.load()
+    const raw../../tmp = await directoryLoader.load()
 
     /* Split text into chunks */
     const textSplitter = new RecursiveCharacterTextSplitter({
@@ -287,7 +287,7 @@ app.post('/api/consume', async (req, res) => {
       chunkOverlap: 200,
     })
 
-    const docs = await textSplitter.splitDocuments(rawDocs)
+    const ../../tmp = await textSplitter.splitDocuments(raw../../tmp)
 
     await connectDB()
 
@@ -295,7 +295,7 @@ app.post('/api/consume', async (req, res) => {
     const newNamespace = new Namespace({
       userEmail: userEmail,
       name: namespaceName,
-      source: rawDocs[0].pageContent,
+      source: raw../../tmp[0].pageContent,
     })
     await newNamespace.save()
 
@@ -304,7 +304,7 @@ app.post('/api/consume', async (req, res) => {
     const index = pinecone.Index(PINECONE_INDEX_NAME) //change to your own index name
 
     //embed the PDF documents
-    await PineconeStore.fromDocuments(docs, embeddings, {
+    await PineconeStore.fromDocuments(../../tmp, embeddings, {
       pineconeIndex: index,
       namespace: namespaceName,
       textKey: 'text',
@@ -568,7 +568,7 @@ app.post('/api/upload', (req, res) => {
       const oldPath = uploadedFile.path
       const newPath = path.join(
         process.cwd(),
-        'docs',
+        '../../tmp',
         uploadedFile.originalFilename,
       )
 
