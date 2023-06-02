@@ -129,20 +129,8 @@ Answer in markdown:`
       chat_history: history || [],
     })
 
-    //new Added all
-    const answersWithSources = [];
-
-    response.text.forEach((answer, index) => {
-      const sourceDocument = response.sourceDocuments[index];
-      answersWithSources.push({
-        answer,
-        courceDocument,
-      });
-    });
-
-
     
-    //console.log('response', response) // original
+    console.log('response', response) // original
 
     const botMessage = new Message({
       sender: 'bot',
@@ -157,8 +145,7 @@ Answer in markdown:`
 
     res
       .status(200)
-      .json({ answersWithSources }) // Added
-      //.json({ text: response.text, sourceDocuments: response.sourceDocuments }) // original
+      .json({ text: response.text, sourceDocuments: response.sourceDocuments }) // original
   } catch (error) {
     console.log('error', error)
     res.status(500).json({ error: error.message || 'Something went wrong' })
