@@ -103,10 +103,11 @@ Standalone question:`
     const QA_PROMPT = `Use the following context to answer the question at the end.
 If you don't know the answer, say that you don't know. Do not make up answers.
 
+Context:
 {context}
 
 Question: {question}
-Answer in markdown:`
+Answer in markdown: Please provide a detailed and comprehensive answer to the question. Include relevant examples, explanations, and supporting information to provide a thorough response. Aim for clarity and completeness in your answer. Consider any relevant details or considerations that might contribute to a comprehensive response.`
 
     const model = new OpenAI({
       temperature: 0,
