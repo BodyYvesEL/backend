@@ -107,7 +107,21 @@ Context:
 {context}
 
 Question: {question}
-Answer in markdown: Please provide a detailed and comprehensive answer to the question. Include relevant examples, explanations, and supporting information to provide a thorough response. Aim for clarity and completeness in your answer. Consider any relevant details or considerations that might contribute to a comprehensive response.`
+Answer in markdown: Please provide a detailed and comprehensive answer to the question. Include relevant examples, explanations, and supporting information to provide a thorough response. Aim for clarity and completeness in your answer. Consider any relevant details or considerations that might contribute to a comprehensive response.
+
+Format your answer using tables where necessary and bullet points where applicable to present the information in a structured and organized manner.
+
+For creating a table, use the following markdown syntax:
+| Column 1 | Column 2 |
+|----------|----------|
+|   Value 1|   Value 2|
+
+For bullet points, use the following markdown syntax:
+- Bullet point 1
+- Bullet point 2
+- Bullet point 3
+
+Format your answer using tables where necessary and bullet points where applicable to present the information in a structured and organized manner.`
 
     const model = new OpenAI({
       temperature: 0,
