@@ -106,8 +106,7 @@ If you don't know the answer, say that you don't know. Do not make up answers.
 {context}
 
 Question: {question}
-Answer in markdown:
-Source: {source}` // added
+Answer in markdown:`
 
     const model = new OpenAI({
       temperature: 0,
@@ -128,7 +127,7 @@ Source: {source}` // added
     const response = await chain.call({
       question: sanitizedQuestion,
       chat_history: history || [],
-      sourceDocuments: true // added
+      
     })
 
     
