@@ -653,7 +653,19 @@ app.post('/api/signup', async (req, res) => {
           from: 'bodymoliki@gmail.com',
           to: email,
           subject: 'OTP HERE',
-          text: `Welcome to QIQO, Here is your OTP : ${otp}`,
+          text: `Greetings and a warm welcome to QIQO! We're delighted to have you here. We are 
+          pleased to provide you with an important security measure: your One-Time Password (OTP) for authentication.
+          Please find your unique OTP below:
+          
+          OTP:${otp}
+          
+          This OTP serves as a temporary code to ensure the security of your account. It is crucial to keep this OTP 
+          confidential and not share it with anyone. We recommend using this OTP promptly to complete the necessary 
+          steps for account verification or access.
+          
+          Once again, thank you for choosing QIQO. If you have any questions or need further assistance, 
+          please don't hesitate to reach out to our dedicated support team. 
+          We're here to help you make the most of your experience with us.`,
         })
         console.log(emailRes)
         console.log('Message Sent')
@@ -689,7 +701,7 @@ app.post('/api/signup', async (req, res) => {
           from: 'bodymoliki@gmail.com',
           to: email,
           subject: 'OTP HERE',
-          text: `Greetings and a warm welcome to QIQO! We´re delighted to have you here. We are 
+          text: `Greetings and a warm welcome to QIQO! We're delighted to have you here. We are 
           pleased to provide you with an important security measure: your One-Time Password (OTP) for authentication.
           Please find your unique OTP below:
           
