@@ -119,16 +119,30 @@ Answer in markdown:`
       {
         qaTemplate: QA_PROMPT,
         questionGeneratorTemplate: CONDENSE_PROMPT,
-        returnSourceDocuments: false,
+        returnSourceDocuments: true,
       },
     )
+
 
     const response = await chain.call({
       question: sanitizedQuestion,
       chat_history: history || [],
     })
 
-    console.log('response', response)
+    //new Added all
+    const answersWithSources = [];
+
+    response.text.forEach((answer, index) => {
+      const sourceDocument = response.sourceDocuments[index];
+      answersWithSources.push({
+        answer,
+        courceDocument,
+      });
+    });
+
+
+    
+    //console.log('response', response) // original
 
     const botMessage = new Message({
       sender: 'bot',
@@ -137,12 +151,14 @@ Answer in markdown:`
       namespace: selectedNamespace,
       userEmail: userEmail,
     })
+    
 
     await botMessage.save()
 
     res
       .status(200)
-      .json({ text: response.text, sourceDocuments: response.sourceDocuments })
+      .json({ answersWithSources }) // Added
+      //.json({ text: response.text, sourceDocuments: response.sourceDocuments }) // original
   } catch (error) {
     console.log('error', error)
     res.status(500).json({ error: error.message || 'Something went wrong' })
