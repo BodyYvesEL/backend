@@ -107,9 +107,7 @@ Context:
 {context}
 
 Question: {question}
-Answer in markdown: Please provide a detailed and comprehensive answer to the question. Include relevant examples, explanations, and supporting information to provide a thorough response. Aim for clarity and completeness in your answer. Consider any relevant details or considerations that might contribute to a comprehensive response.
-
-**Source: Page ${page_number}**`;
+Answer in markdown: Please provide a detailed and comprehensive answer to the question. Include relevant examples, explanations, and supporting information to provide a thorough response. Aim for clarity and completeness in your answer. Consider any relevant details or considerations that might contribute to a comprehensive response.`
 
 
 
